@@ -95,6 +95,13 @@ func MetricsFlags() []cli.Flag {
 			Value:       true,
 			Destination: &config.Metrics.DisableGoMetrics,
 		}),
+		altsrc.NewBoolFlag(&cli.BoolFlag{
+			Name:        "metrics.fetch_workflow_usage",
+			Usage:       "Fetch Workflow Usage",
+			Aliases:     []string{"mfwu"},
+			Value:       true,
+			Destination: &config.Metrics.FetchWorkflowUsage,
+		}),
 	}
 }
 
