@@ -7,10 +7,9 @@ import (
 
 	"github.com/google/go-github/v51/github"
 	"github.com/labbs/github-exporter/config"
-	"github.com/rs/zerolog"
 )
 
-func GetRunnersOrganizationFromGithub(logger zerolog.Logger, client *github.Client) {
+func GetRunnersOrganizationFromGithub(client *github.Client) {
 	RunnersOrganizationGauge.Reset()
 	opt := &github.ListOptions{PerPage: 200}
 
@@ -20,11 +19,11 @@ func GetRunnersOrganizationFromGithub(logger zerolog.Logger, client *github.Clie
 		for {
 			resp, rr, err := client.Actions.ListOrganizationRunners(context.Background(), orga, opt)
 			if rlerr, ok := err.(*github.RateLimitError); ok {
-				logger.Info().Err(rlerr).Str("event", "get_runners_organization_from_github").Msg("Rate limit error, waiting for reset until " + rlerr.Rate.Reset.String())
+				Logger.Info().Err(rlerr).Str("event", "get_runners_organization_from_github").Msg("Rate limit error, waiting for reset until " + rlerr.Rate.Reset.String())
 				time.Sleep(time.Until(rlerr.Rate.Reset.Time))
 				continue
 			} else if err != nil {
-				logger.Error().Err(err).Str("event", "get_runners_organization_from_github").Str("organization", orga).Msg("Error to get runners organization from github")
+				Logger.Error().Err(err).Str("event", "get_runners_organization_from_github").Str("organization", orga).Msg("Error to get runners organization from github")
 				break
 			}
 			runners = append(runners, resp.Runners...)

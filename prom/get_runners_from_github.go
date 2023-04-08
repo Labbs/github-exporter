@@ -7,25 +7,23 @@ import (
 	"time"
 
 	"github.com/google/go-github/v51/github"
-	"github.com/labbs/github-exporter/config"
-	"github.com/rs/zerolog"
 )
 
-func GetRunnersFromGhithub(logger zerolog.Logger, client *github.Client) {
+func GetRunnersFromGhithub(client *github.Client) {
 	opt := &github.ListOptions{PerPage: 200}
 
-	for _, repo := range config.Github.Repositories.Value() {
+	for _, repo := range repositories {
 		var runners []*github.Runner
 		r := strings.Split(repo, "/")
 
 		for {
 			resp, rr, err := client.Actions.ListRunners(context.Background(), r[0], r[1], opt)
 			if rlerr, ok := err.(*github.RateLimitError); ok {
-				logger.Info().Err(rlerr).Str("event", "get_runners_from_github").Msg("Rate limit error, waiting for reset until " + rlerr.Rate.Reset.String())
+				Logger.Info().Err(rlerr).Str("event", "get_runners_from_github").Msg("Rate limit error, waiting for reset until " + rlerr.Rate.Reset.String())
 				time.Sleep(time.Until(rlerr.Rate.Reset.Time))
 				continue
 			} else if err != nil {
-				logger.Error().Err(err).Str("event", "get_runners_from_github").Str("repo", repo).Msg("Error to get runners from github")
+				Logger.Error().Err(err).Str("event", "get_runners_from_github").Str("repo", repo).Msg("Error to get runners from github")
 				break
 			}
 			runners = append(runners, resp.Runners...)
