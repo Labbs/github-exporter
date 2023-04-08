@@ -23,11 +23,18 @@ func App(version string) Application {
 	app.GithubClient = NewGHClient(app.Logger)
 	app.CronScheduler = InitCronScheduler()
 
-	app.CronScheduler.Every(config.Github.RefreshInterval*5).Second().Do(prom.GithubFetcher, app.Logger, app.GithubClient)
-	app.CronScheduler.Every(config.Github.RefreshInterval).Second().Do(prom.GetBillableFromGithub, app.Logger, app.GithubClient)
+	prom.Logger = app.Logger
+
+	app.CronScheduler.Every(config.Github.RefreshInterval*5).Second().Do(prom.GithubFetcher, app.GithubClient)
 
 	if config.Github.EnterpriseName != "" {
-		app.CronScheduler.Every(config.Github.RefreshInterval).Second().Do(prom.GetRunnersEnterpriseFromGithub, app.Logger, app.GithubClient)
+		app.CronScheduler.Every(config.Github.RefreshInterval).Second().Do(prom.GetRunnersEnterpriseFromGithub, app.GithubClient)
 	}
+
+	app.CronScheduler.Every(config.Github.RefreshInterval).Second().Do(prom.GetBillableFromGithub, app.GithubClient)
+	app.CronScheduler.Every(config.Github.RefreshInterval).Second().Do(prom.GetRunnersFromGhithub, app.GithubClient)
+	app.CronScheduler.Every(config.Github.RefreshInterval).Second().Do(prom.GetRunnersOrganizationFromGithub, app.GithubClient)
+	app.CronScheduler.Every(config.Github.RefreshInterval).Second().Do(prom.GetWorkflowRunsFromGithub, app.GithubClient)
+
 	return *app
 }
