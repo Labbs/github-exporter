@@ -30,8 +30,9 @@ var (
 	}
 
 	Metrics struct {
-		DisableGoMetrics   bool
-		FetchWorkflowUsage bool
+		DisableGoMetrics     bool
+		FetchWorkflowUsage   bool
+		FetchEnterpriseStats bool
 	}
 
 	WorkflowFields cli.StringSlice

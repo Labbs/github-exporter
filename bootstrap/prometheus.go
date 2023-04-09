@@ -27,6 +27,9 @@ func InitPrometheusMetrics() *prometheus.Registry {
 
 	if config.Github.EnterpriseName != "" {
 		registry.MustRegister(prom.RunnersEnterpriseGauge)
+		if config.Metrics.FetchEnterpriseStats {
+			registry.MustRegister(prom.AdminStatsGauge)
+		}
 	}
 
 	return registry

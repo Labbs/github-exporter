@@ -53,4 +53,12 @@ var (
 		},
 		config.WorkflowFields.Value(),
 	)
+
+	AdminStatsGauge = prometheus.NewGaugeVec(
+		prometheus.GaugeOpts{
+			Name: "github_admin_stats",
+			Help: "Admin stats for a GitHub Enterprise instance",
+		},
+		[]string{"name", "type"},
+	)
 )
