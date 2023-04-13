@@ -19,7 +19,7 @@ RUN addgroup --system --gid 1000 exporter && \
 
 FROM alpine:latest
 
-COPY --from=builder /etc/group /etc/password /etc/
+COPY --from=builder /etc/group /etc/passwd /etc/
 COPY --from=builder /bin/github-exporter /github-exporter
 
 USER exporter
