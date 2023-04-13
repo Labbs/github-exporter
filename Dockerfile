@@ -1,9 +1,12 @@
-FROM golang:1.20 as builder
+FROM golang:1.20-alpine as builder
 
 ARG VERSION
 
 WORKDIR /app
 COPY . .
+
+RUN apk add --no-cache git libcap ca-certificates && \
+    update-ca-certificates 2>/dev/null || true
 
 RUN go mod download
 RUN CGO_ENABLED=0 GOOS=linux \
