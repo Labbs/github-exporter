@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/labbs/github-exporter/bootstrap"
 	"github.com/labbs/github-exporter/config"
@@ -20,6 +21,7 @@ func main() {
 	app.Name = "github-exporter"
 	app.Usage = "Github exporter"
 	app.Version = version
+	app.Compiled = time.Now()
 	app.Commands = []*cli.Command{
 		{
 			Name:   "server",
