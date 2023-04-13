@@ -1,15 +1,13 @@
 FROM golang:1.20 as builder
 
 ARG VERSION
-ARG COMMIT
-ARG DATE
 
 WORKDIR /app
 COPY . .
 
 RUN go mod download
 RUN CGO_ENABLED=0 GOOS=linux \
-    go build -ldglags "-X cmd.main.version=${VERSION}" -o /bin/github-exporter .
+    go build -a -installsuffix cgo -ldflags="-X 'main.version=${VERSION}'" -o /bin/github-exporter cmd/main.go
 
 RUN addgroup --system gid 1000 exporter && \
     adduser --system --ingroup exporter --uid 1000 --disabled-password --shell /sbin/nologin --no-create-home --gecos "" exporter && \
