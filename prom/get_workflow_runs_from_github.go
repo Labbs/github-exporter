@@ -108,8 +108,8 @@ func getFieldValue(run github.WorkflowRun, repo, field string) string {
 }
 
 func getRelevantFields(repo string, run *github.WorkflowRun) []string {
-	result := make([]string, len(config.WorkflowFields.Value()))
-	for i, field := range config.WorkflowFields.Value() {
+	result := make([]string, len(config.Metrics.WorkflowFields.Value()))
+	for i, field := range config.Metrics.WorkflowFields.Value() {
 		result[i] = getFieldValue(*run, repo, field)
 	}
 	return result

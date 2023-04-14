@@ -33,8 +33,8 @@ var (
 		DisableGoMetrics     bool
 		FetchWorkflowUsage   bool
 		FetchEnterpriseStats bool
+		WorkflowFields       cli.StringSlice
 	}
 
-	WorkflowFields cli.StringSlice
-	CacheHTTPSize  int64
+	CacheHTTPSize int64
 )

@@ -102,6 +102,20 @@ func MetricsFlags() []cli.Flag {
 			Value:       true,
 			Destination: &config.Metrics.FetchWorkflowUsage,
 		}),
+		altsrc.NewBoolFlag(&cli.BoolFlag{
+			Name:        "metrics.fetch_enterprise_stats",
+			Usage:       "Fetch Enterprise Stats",
+			Aliases:     []string{"mfes"},
+			Value:       true,
+			Destination: &config.Metrics.FetchEnterpriseStats,
+		}),
+		altsrc.NewStringSliceFlag(&cli.StringSliceFlag{
+			Name:        "workflow_fields",
+			Usage:       "Workflow fields to export",
+			Aliases:     []string{"wf"},
+			Value:       cli.NewStringSlice("repo", "id", "node_id", "head_branch", "head_sha", "run_number", "workflow_id", "workflow", "event", "status"),
+			Destination: &config.Metrics.WorkflowFields,
+		}),
 	}
 }
 
@@ -113,13 +127,6 @@ func ServerFlags() []cli.Flag {
 			EnvVars:     []string{"PORT"},
 			Usage:       "Server Port",
 			Destination: &config.Port,
-		}),
-		altsrc.NewStringSliceFlag(&cli.StringSliceFlag{
-			Name:        "workflow_fields",
-			Usage:       "Workflow fields to export",
-			Aliases:     []string{"wf"},
-			Value:       cli.NewStringSlice("repo", "id", "node_id", "head_branch", "head_sha", "run_number", "workflow_id", "workflow", "event", "status"),
-			Destination: &config.WorkflowFields,
 		}),
 		altsrc.NewInt64Flag(&cli.Int64Flag{
 			Name:        "cache_http_size_bytes",

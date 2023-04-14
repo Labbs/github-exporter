@@ -43,7 +43,7 @@ var (
 			Name: "github_workflow_run_status",
 			Help: "Workflow run status of all workflow runs created in the last 12hr",
 		},
-		config.WorkflowFields.Value(),
+		config.Metrics.WorkflowFields.Value(),
 	)
 
 	WorkflowRunDurationGauge = prometheus.NewGaugeVec(
@@ -51,7 +51,7 @@ var (
 			Name: "github_workflow_run_duration_ms",
 			Help: "Workflow run duration (in milliseconds) of all workflow runs created in the last 12hr",
 		},
-		config.WorkflowFields.Value(),
+		config.Metrics.WorkflowFields.Value(),
 	)
 
 	AdminStatsGauge = prometheus.NewGaugeVec(
