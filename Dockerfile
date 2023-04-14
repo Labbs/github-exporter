@@ -1,16 +1,11 @@
 FROM golang:1.20-alpine as builder
 
-ARG VERSION
-
 WORKDIR /app
-COPY . .
 
 RUN apk add --no-cache git libcap ca-certificates && \
     update-ca-certificates 2>/dev/null || true
 
-RUN go mod download
-RUN CGO_ENABLED=0 GOOS=linux \
-    go build -a -installsuffix cgo -ldflags="-X 'main.version=${VERSION}'" -o /bin/github-exporter cmd/main.go
+COPY github-exporter /bin/github-exporter
 
 RUN addgroup --system --gid 1000 exporter && \
     adduser --system --ingroup exporter --uid 1000 --disabled-password --shell /sbin/nologin --no-create-home --gecos "" exporter && \
