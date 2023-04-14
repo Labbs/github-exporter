@@ -11,7 +11,6 @@ func GenericFlags() []cli.Flag {
 		&cli.StringFlag{
 			Name:        "config",
 			Aliases:     []string{"c"},
-			EnvVars:     []string{"CONFIG"},
 			Usage:       "Config file path",
 			Value:       "config.json",
 			Destination: &config.ConfigFile,
@@ -19,7 +18,6 @@ func GenericFlags() []cli.Flag {
 		altsrc.NewBoolFlag(&cli.BoolFlag{
 			Name:        "debug",
 			Aliases:     []string{"d"},
-			EnvVars:     []string{"DEBUG"},
 			Value:       false,
 			Usage:       "Enable debug mode",
 			Destination: &config.Debug,
@@ -124,7 +122,6 @@ func ServerFlags() []cli.Flag {
 		altsrc.NewIntFlag(&cli.IntFlag{
 			Name:        "port",
 			Aliases:     []string{"p"},
-			EnvVars:     []string{"PORT"},
 			Usage:       "Server Port",
 			Destination: &config.Port,
 		}),
