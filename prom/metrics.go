@@ -1,11 +1,12 @@
 package prom
 
 import (
-	"github.com/labbs/github-exporter/config"
 	"github.com/prometheus/client_golang/prometheus"
 )
 
 var (
+	Fields []string
+
 	WorkflowBillGauge = prometheus.NewGaugeVec(
 		prometheus.GaugeOpts{
 			Name: "github_workflow_usage_seconds",
@@ -43,7 +44,7 @@ var (
 			Name: "github_workflow_run_status",
 			Help: "Workflow run status of all workflow runs created in the last 12hr",
 		},
-		config.Metrics.WorkflowFields.Value(),
+		Fields,
 	)
 
 	WorkflowRunDurationGauge = prometheus.NewGaugeVec(
@@ -51,7 +52,7 @@ var (
 			Name: "github_workflow_run_duration_ms",
 			Help: "Workflow run duration (in milliseconds) of all workflow runs created in the last 12hr",
 		},
-		config.Metrics.WorkflowFields.Value(),
+		Fields,
 	)
 
 	AdminStatsGauge = prometheus.NewGaugeVec(
