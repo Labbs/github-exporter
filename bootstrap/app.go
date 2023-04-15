@@ -18,6 +18,7 @@ type Application struct {
 
 func App(version string) Application {
 	app := &Application{}
+	prom.Fields = config.Metrics.WorkflowFields.Value()
 	app.Logger = InitLogger(version, config.Debug)
 	app.Fiber = InitFiber(app.Logger)
 	app.GithubClient = NewGHClient(app.Logger)

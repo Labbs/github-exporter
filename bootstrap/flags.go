@@ -111,7 +111,7 @@ func MetricsFlags() []cli.Flag {
 			Name:        "workflow_fields",
 			Usage:       "Workflow fields to export",
 			Aliases:     []string{"wf"},
-			Value:       cli.NewStringSlice("repo", "id", "node_id", "head_branch", "head_sha", "run_number", "workflow_id", "workflow", "event", "status"),
+			DefaultText: "repo,id,node_id,head_branch,head_sha,run_number,workflow_id,workflow,event,status",
 			Destination: &config.Metrics.WorkflowFields,
 		}),
 	}
