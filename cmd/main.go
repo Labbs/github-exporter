@@ -39,6 +39,21 @@ func main() {
 				return appBootstrap.Fiber.Listen(":" + strconv.Itoa(config.Port))
 			},
 		},
+		{
+			Name:  "generate-config",
+			Usage: "Generate a config file",
+			Flags: []cli.Flag{
+				&cli.StringFlag{
+					Name:    "path",
+					Aliases: []string{"p"},
+					Usage:   "Path to save the config file",
+				},
+			},
+			Action: func(c *cli.Context) error {
+				config.GenerateTemplateConfigFile(c.String("path"))
+				return nil
+			},
+		},
 	}
 
 	config.Version = version
