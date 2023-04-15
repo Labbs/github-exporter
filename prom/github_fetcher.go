@@ -20,7 +20,6 @@ func GithubFetcher(client *github.Client) {
 			repos = append(repos, getReposFromOrganization(client, orga)...)
 		}
 	}
-	repositories = repos
 
 	// Get workflows
 	non_empty_repos := make([]string, 0)
@@ -36,8 +35,6 @@ func GithubFetcher(client *github.Client) {
 	}
 	repositories = non_empty_repos
 	workflows = ww
-	Logger.Debug().Str("event", "get_workflows_from_repository").Int("count", len(repositories)).Any("repositories", repositories).Msg("Repositories with workflows found")
-	Logger.Debug().Str("event", "get_workflows_from_repository").Int("count", len(workflows)).Any("workflows", workflows).Msg("Workflows found")
 }
 
 func getReposFromOrganization(client *github.Client, orga string) []string {
