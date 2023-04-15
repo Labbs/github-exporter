@@ -40,13 +40,13 @@ func GetWorkflowRunsFromGithub(client *github.Client) {
 
 		for _, run := range runs {
 			var status float64 = 0
-			if run.GetStatus() == "success" {
+			if run.GetConclusion() == "success" {
 				status = 1
-			} else if run.GetStatus() == "skipped" {
+			} else if run.GetConclusion() == "skipped" {
 				status = 2
-			} else if run.GetStatus() == "in_progress" {
+			} else if run.GetConclusion() == "in_progress" {
 				status = 3
-			} else if run.GetStatus() == "queued" {
+			} else if run.GetConclusion() == "queued" {
 				status = 4
 			}
 
