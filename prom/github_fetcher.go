@@ -30,7 +30,7 @@ func GithubFetcher(client *github.Client) {
 		if len(workflows_for_repo) > 0 {
 			ww[repo] = workflows_for_repo
 			non_empty_repos = append(non_empty_repos, repo)
-			Logger.Info().Str("event", "get_workflows_from_repository").Str("repository", repo).Int("count", len(workflows_for_repo)).Msg("Workflows found")
+			Logger.Debug().Str("event", "get_workflows_from_repository").Str("repository", repo).Int("count", len(workflows_for_repo)).Msg("Workflows found")
 		}
 	}
 	repositories = non_empty_repos
