@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/bradleyfalzon/ghinstallation/v2 v2.2.0
 	github.com/die-net/lrucache v0.0.0-20220628165024-20a71bc65bf1
-	github.com/go-co-op/gocron v1.19.0
+	github.com/go-co-op/gocron v1.22.1
 	github.com/goccy/go-json v0.10.2
 	github.com/gofiber/fiber/v2 v2.43.0
 	github.com/google/go-github/v51 v51.0.0
