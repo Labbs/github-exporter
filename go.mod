@@ -3,7 +3,7 @@ module github.com/labbs/github-exporter
 go 1.20
 
 require (
-	github.com/bradleyfalzon/ghinstallation/v2 v2.2.0
+	github.com/bradleyfalzon/ghinstallation/v2 v2.3.0
 	github.com/die-net/lrucache v0.0.0-20220628165024-20a71bc65bf1
 	github.com/go-co-op/gocron v1.19.0
 	github.com/goccy/go-json v0.10.2
@@ -27,7 +27,7 @@ require (
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/google/go-github/v50 v50.1.0 // indirect
+	github.com/google/go-github/v50 v50.2.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/klauspost/compress v1.16.3 // indirect
