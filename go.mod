@@ -11,7 +11,7 @@ require (
 	github.com/google/go-github/v51 v51.0.0
 	github.com/gregjones/httpcache v0.0.0-20190611155906-901d90724c79
 	github.com/prometheus/client_golang v1.14.0
-	github.com/rs/zerolog v1.29.0
+	github.com/rs/zerolog v1.29.1
 	github.com/urfave/cli/v2 v2.25.1
 	github.com/valyala/fasthttp v1.47.0
 	golang.org/x/oauth2 v0.6.0
