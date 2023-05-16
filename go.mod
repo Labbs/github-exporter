@@ -7,13 +7,13 @@ require (
 	github.com/die-net/lrucache v0.0.0-20220628165024-20a71bc65bf1
 	github.com/go-co-op/gocron v1.27.0
 	github.com/goccy/go-json v0.10.2
-	github.com/gofiber/fiber/v2 v2.43.0
+	github.com/gofiber/fiber/v2 v2.45.0
 	github.com/google/go-github/v51 v51.0.0
 	github.com/gregjones/httpcache v0.0.0-20190611155906-901d90724c79
 	github.com/prometheus/client_golang v1.14.0
 	github.com/rs/zerolog v1.29.0
 	github.com/urfave/cli/v2 v2.25.1
-	github.com/valyala/fasthttp v1.45.0
+	github.com/valyala/fasthttp v1.47.0
 	golang.org/x/oauth2 v0.6.0
 )
 
@@ -32,7 +32,7 @@ require (
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/klauspost/compress v1.16.3 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
-	github.com/mattn/go-isatty v0.0.17 // indirect
+	github.com/mattn/go-isatty v0.0.18 // indirect
 	github.com/mattn/go-runewidth v0.0.14 // indirect
 	github.com/matttproud/golang_protobuf_extensions v1.0.1 // indirect
 	github.com/philhofer/fwd v1.1.2 // indirect
@@ -51,7 +51,7 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	golang.org/x/crypto v0.7.0 // indirect
 	golang.org/x/net v0.8.0 // indirect
-	golang.org/x/sys v0.6.0 // indirect
+	golang.org/x/sys v0.8.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
